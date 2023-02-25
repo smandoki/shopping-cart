@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 function useFetchProducts() {
   const [products, setProducts] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -13,7 +13,7 @@ function useFetchProducts() {
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-        setIsLoading(true);
+        setIsLoading(false);
       })
       .catch((e) => {
         if (e.name === 'TypeError' || e.name === 'AbortError') return;
@@ -25,7 +25,7 @@ function useFetchProducts() {
     };
   }, []);
 
-  return { products, isLoading };
+  return [products, isLoading];
 }
 
 export default useFetchProducts;

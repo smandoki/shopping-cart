@@ -1,7 +1,17 @@
-function Shop() {
+import styles from '../styles/Shop.module.css';
+import ProductCard from './ProductCard';
+
+function Shop({ products, isLoading }) {
+  console.log(products);
   return (
-    <div>
-      <h1>Shop</h1>
+    <div className={styles.shop}>
+      {isLoading ? (
+        <div className={styles.loader}></div>
+      ) : (
+        products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))
+      )}
     </div>
   );
 }

@@ -7,16 +7,16 @@ import useFetchProducts from './hooks/useFetchProducts';
 import { useState } from 'react';
 
 function App() {
-  const { products, isLoading } = useFetchProducts();
-  // const { cart, setCart } = useState([]);
+  const [products, isLoading] = useFetchProducts();
+  const [cart, setCart] = useState([]);
 
-  // const numItemsInCart = cart.reduce((total, cartItem) => {
-  //   return total + cartItem.quantity;
-  // }, 0);
+  const numItemsInCart = cart.reduce((total, cartItem) => {
+    return total + cartItem.quantity;
+  }, 0);
 
   return (
     <>
-      <Header numItemsInCart={0} />
+      <Header numItemsInCart={numItemsInCart} />
 
       <Routes>
         <Route path='/' element={<Home />} />
@@ -26,7 +26,7 @@ function App() {
           element={<Shop products={products} isLoading={isLoading} />}
         />
 
-        <Route path='/cart' element={<Cart />} />
+        <Route path='/cart' element={<Cart products={products} />} />
       </Routes>
     </>
   );

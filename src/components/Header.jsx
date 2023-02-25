@@ -1,7 +1,7 @@
 import styles from '../styles/Header.module.css';
 import { Link } from 'react-router-dom';
 
-function Header(props) {
+function Header({ numItemsInCart }) {
   return (
     <header className={styles.header}>
       <h1>Fake Shop</h1>
@@ -14,7 +14,7 @@ function Header(props) {
           Shop
         </Link>
         <Link className={styles.link} to='/cart'>
-          Cart ({props.numItemsInCart})
+          Cart ({numItemsInCart})
         </Link>
       </nav>
     </header>
