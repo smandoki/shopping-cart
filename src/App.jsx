@@ -14,6 +14,25 @@ function App() {
     return total + cartItem.quantity;
   }, 0);
 
+  function addItemToCart(id) {
+    setCart((prevCart) => {
+      const item = prevCart.find((item) => item.id === id);
+
+      //if product in cart, increment quanity by 1, else add item to cart
+      if (item) {
+        return prevCart.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          }
+
+          return { ...item };
+        });
+      } else {
+        return [...prevCart, { id, quantity: 1 }];
+      }
+    });
+  }
+
   return (
     <>
       <Header numItemsInCart={numItemsInCart} />
@@ -23,7 +42,13 @@ function App() {
 
         <Route
           path='/shop'
-          element={<Shop products={products} isLoading={isLoading} />}
+          element={
+            <Shop
+              products={products}
+              isLoading={isLoading}
+              handleAddItem={addItemToCart}
+            />
+          }
         />
 
         <Route path='/cart' element={<Cart products={products} />} />
