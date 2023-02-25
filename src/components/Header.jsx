@@ -1,12 +1,20 @@
-function Header() {
+import styles from '../styles/Header.module.css';
+
+function Header(props) {
   return (
-    <header>
+    <header className={styles.header}>
       <h1>Fake Shop</h1>
 
-      <nav>
-        <a href='/'>Home</a>
-        <a href='/shop'>Shop</a>
-        <a href='/cart'>Cart</a>
+      <nav className={styles.nav}>
+        <a className={styles.link} href='/'>
+          Home
+        </a>
+        <a className={styles.link} href='/shop'>
+          Shop
+        </a>
+        <a className={styles.link} href='/cart'>
+          Cart ({props.numItemsInCart})
+        </a>
       </nav>
     </header>
   );
