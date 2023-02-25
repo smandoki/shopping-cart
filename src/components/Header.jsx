@@ -1,4 +1,5 @@
 import styles from '../styles/Header.module.css';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
   return (
@@ -6,15 +7,15 @@ function Header(props) {
       <h1>Fake Shop</h1>
 
       <nav className={styles.nav}>
-        <a className={styles.link} href='/'>
+        <Link className={styles.link} to='/'>
           Home
-        </a>
-        <a className={styles.link} href='/shop'>
+        </Link>
+        <Link className={styles.link} to='/shop'>
           Shop
-        </a>
-        <a className={styles.link} href='/cart'>
+        </Link>
+        <Link className={styles.link} to='/cart'>
           Cart ({props.numItemsInCart})
-        </a>
+        </Link>
       </nav>
     </header>
   );

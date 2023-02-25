@@ -1,9 +1,8 @@
-import './styles/App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import useFetchProducts from './hooks/useFetchProducts';
 import { useState } from 'react';
 
@@ -19,16 +18,16 @@ function App() {
     <>
       <Header numItemsInCart={0} />
 
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route
-            path='/shop'
-            element={<Shop products={products} isLoading={isLoading} />}
-          />
-          <Route path='/cart' element={<Cart />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+
+        <Route
+          path='/shop'
+          element={<Shop products={products} isLoading={isLoading} />}
+        />
+
+        <Route path='/cart' element={<Cart />} />
+      </Routes>
     </>
   );
 }
