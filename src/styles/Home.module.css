@@ -1,0 +1,43 @@
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../img/mining-graphics-cards.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 80px;
+  bottom: 0;
+}
+
+.info {
+  background-color: black;
+  height: 100px;
+  width: 340px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  gap: 30px;
+}
+
+.link {
+  text-decoration: none;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 10px;
+  color: black;
+  border: 1px solid white;
+  width: 140px;
+}
+
+.link:hover {
+  color: white;
+  background-color: black;
+}

@@ -9,15 +9,15 @@ import { useState } from 'react';
 
 function App() {
   const { products, isLoading } = useFetchProducts();
-  const { cart, setCart } = useState([]);
+  // const { cart, setCart } = useState([]);
 
-  const numItemsInCart = cart.reduce((total, cartItem) => {
-    return total + cartItem.quantity;
-  }, 0);
+  // const numItemsInCart = cart.reduce((total, cartItem) => {
+  //   return total + cartItem.quantity;
+  // }, 0);
 
   return (
     <>
-      <Header numItemsInCart={numItemsInCart} />
+      <Header numItemsInCart={0} />
 
       <BrowserRouter>
         <Routes>

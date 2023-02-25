@@ -1,7 +1,14 @@
+import styles from '../styles/Home.module.css';
+
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className={styles.home}>
+      <div className={styles.info}>
+        <h3>Highest quality fake electronics for the lowest prices!</h3>
+        <a className={styles.link} href='/shop'>
+          Shop Now
+        </a>
+      </div>
     </div>
   );
 }
