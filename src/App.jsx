@@ -16,10 +16,11 @@ function App() {
 
   function addItemToCart(id) {
     setCart((prevCart) => {
-      const item = prevCart.find((item) => item.id === id);
+      const index = prevCart.findIndex((item) => item.id === id);
 
       //if product in cart, increment quanity by 1, else add item to cart
-      if (item) {
+      //deep cloning new state at the same time
+      if (index) {
         return prevCart.map((item) => {
           if (item.id === id) {
             return { ...item, quantity: item.quantity + 1 };
@@ -28,8 +29,26 @@ function App() {
           return { ...item };
         });
       } else {
-        return [...prevCart, { id, quantity: 1 }];
+        return [...prevCart.map((item) => ({ ...item })), { id, quantity: 1 }];
       }
+    });
+  }
+
+  function removeItemFromCart(id) {
+    setCart((prevCart) => {
+      //deep clone state then modify new state
+      const newCart = prevCart.map((item) => ({ ...item }));
+      const index = newCart.findIndex((item) => item.id === id);
+
+      if (index) {
+        newCart[index].quantity -= 1;
+
+        if (newCart[index].quantity === 0) {
+          newCart.splice(index, 1);
+        }
+      }
+
+      return newCart;
     });
   }
 
@@ -51,7 +70,17 @@ function App() {
           }
         />
 
-        <Route path='/cart' element={<Cart products={products} />} />
+        <Route
+          path='/cart'
+          element={
+            <Cart
+              products={products}
+              cart={cart}
+              handleAddItem={addItemToCart}
+              handleRemoveItem={removeItemFromCart}
+            />
+          }
+        />
       </Routes>
     </>
   );
