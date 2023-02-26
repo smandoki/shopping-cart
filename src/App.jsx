@@ -16,21 +16,17 @@ function App() {
 
   function addItemToCart(id) {
     setCart((prevCart) => {
-      const index = prevCart.findIndex((item) => item.id === id);
+      const newCart = prevCart.map((item) => ({ ...item }));
+      const index = newCart.findIndex((item) => item.id === id);
 
       //if product in cart, increment quanity by 1, else add item to cart
-      //deep cloning new state at the same time
-      if (index) {
-        return prevCart.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 };
-          }
-
-          return { ...item };
-        });
+      if (index !== -1) {
+        newCart[index].quantity += 1;
       } else {
-        return [...prevCart.map((item) => ({ ...item })), { id, quantity: 1 }];
+        newCart.push({ id, quantity: 1 });
       }
+
+      return newCart;
     });
   }
 
@@ -40,7 +36,7 @@ function App() {
       const newCart = prevCart.map((item) => ({ ...item }));
       const index = newCart.findIndex((item) => item.id === id);
 
-      if (index) {
+      if (index !== -1) {
         newCart[index].quantity -= 1;
 
         if (newCart[index].quantity === 0) {

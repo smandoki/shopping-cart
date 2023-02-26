@@ -1,0 +1,45 @@
+.cartItem {
+  width: 100%;
+  display: flex;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding: 20px;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  object-fit: scale-down;
+}
+
+.title {
+  width: 300px;
+}
+
+.quantity {
+  display: flex;
+  gap: 4px;
+}
+
+.button {
+  padding: 2px;
+  border: 1px solid black;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background-color: black;
+  color: white;
+}
+
+.button:active {
+  background-color: rgb(129, 129, 129);
+  color: white;
+}

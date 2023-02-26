@@ -1,0 +1,13 @@
+.cart {
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.total {
+  margin-left: auto;
+}
