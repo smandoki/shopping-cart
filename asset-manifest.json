@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/shopping-cart/static/css/main.c5fbf856.css",
-    "main.js": "/shopping-cart/static/js/main.910833fb.js",
+    "main.js": "/shopping-cart/static/js/main.2f491543.js",
     "static/media/mining-graphics-cards.jpg": "/shopping-cart/static/media/mining-graphics-cards.ab59d2fe5634e9c3f7b4.jpg",
     "index.html": "/shopping-cart/index.html",
     "main.c5fbf856.css.map": "/shopping-cart/static/css/main.c5fbf856.css.map",
-    "main.910833fb.js.map": "/shopping-cart/static/js/main.910833fb.js.map"
+    "main.2f491543.js.map": "/shopping-cart/static/js/main.2f491543.js.map"
   },
   "entrypoints": [
     "static/css/main.c5fbf856.css",
-    "static/js/main.910833fb.js"
+    "static/js/main.2f491543.js"
   ]
 }
