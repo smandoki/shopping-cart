@@ -6,7 +6,7 @@ function Home() {
     <div className={styles.home}>
       <div className={styles.info}>
         <h3>Highest quality fake electronics for the lowest prices!</h3>
-        <Link className={styles.link} to='/shop'>
+        <Link className={styles.link} to='/shopping-cart/shop'>
           Shop Now
         </Link>
       </div>

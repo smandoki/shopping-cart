@@ -7,13 +7,13 @@ function Header({ numItemsInCart }) {
       <h1>Fake Shop</h1>
 
       <nav className={styles.nav}>
-        <Link className={styles.link} to='/'>
+        <Link className={styles.link} to='/shopping-cart'>
           Home
         </Link>
-        <Link className={styles.link} to='/shop'>
+        <Link className={styles.link} to='/shopping-cart/shop'>
           Shop
         </Link>
-        <Link className={styles.link} to='/cart'>
+        <Link className={styles.link} to='/shopping-cart/cart'>
           Cart ({numItemsInCart})
         </Link>
       </nav>

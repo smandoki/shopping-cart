@@ -53,10 +53,10 @@ function App() {
       <Header numItemsInCart={numItemsInCart} />
 
       <Routes>
-        <Route index path='/' element={<Home />} />
+        <Route index path='/shopping-cart' element={<Home />} />
 
         <Route
-          path='/shop'
+          path='/shopping-cart/shop'
           element={
             <Shop
               products={products}
@@ -67,7 +67,7 @@ function App() {
         />
 
         <Route
-          path='/cart'
+          path='/shopping-cart/cart'
           element={
             <Cart
               products={products}
