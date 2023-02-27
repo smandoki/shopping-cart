@@ -4,47 +4,36 @@ import Shop from './components/Shop';
 import Cart from './components/Cart';
 import { Routes, Route } from 'react-router-dom';
 import useFetchProducts from './hooks/useFetchProducts';
-import { useState } from 'react';
+import { useReducer } from 'react';
+import cartReducer from './reducers/cartReducer';
 
 function App() {
   const [products, isLoading] = useFetchProducts();
-  const [cart, setCart] = useState([]);
+  const [cart, dispatch] = useReducer(cartReducer, {});
 
-  const numItemsInCart = cart.reduce((total, cartItem) => {
-    return total + cartItem.quantity;
+  //using reduce on an object rather than array
+  const numItemsInCart = Object.keys(cart).reduce((total, key) => {
+    return total + cart[key];
   }, 0);
 
-  function addItemToCart(id) {
-    setCart((prevCart) => {
-      const newCart = prevCart.map((item) => ({ ...item }));
-      const index = newCart.findIndex((item) => item.id === id);
-
-      //if product in cart, increment quanity by 1, else add item to cart
-      if (index !== -1) {
-        newCart[index].quantity += 1;
-      } else {
-        newCart.push({ id, quantity: 1 });
-      }
-
-      return newCart;
+  function addCartItem(id) {
+    dispatch({
+      type: 'add',
+      id,
     });
   }
 
-  function removeItemFromCart(id) {
-    setCart((prevCart) => {
-      //deep clone state then modify new state
-      const newCart = prevCart.map((item) => ({ ...item }));
-      const index = newCart.findIndex((item) => item.id === id);
+  function removeCartItem(id) {
+    dispatch({
+      type: 'remove',
+      id,
+    });
+  }
 
-      if (index !== -1) {
-        newCart[index].quantity -= 1;
-
-        if (newCart[index].quantity === 0) {
-          newCart.splice(index, 1);
-        }
-      }
-
-      return newCart;
+  function deleteCartItem(id) {
+    dispatch({
+      type: 'delete',
+      id,
     });
   }
 
@@ -61,7 +50,7 @@ function App() {
             <Shop
               products={products}
               isLoading={isLoading}
-              handleAddItem={addItemToCart}
+              handleAddItem={addCartItem}
             />
           }
         />
@@ -72,8 +61,9 @@ function App() {
             <Cart
               products={products}
               cart={cart}
-              handleAddItem={addItemToCart}
-              handleRemoveItem={removeItemFromCart}
+              handleAddItem={addCartItem}
+              handleRemoveItem={removeCartItem}
+              handleDeleteItem={deleteCartItem}
             />
           }
         />
