@@ -8,10 +8,10 @@ import { useReducer } from 'react';
 import cartReducer from './reducers/cartReducer';
 
 function App() {
-  const [products, isLoading] = useFetchProducts();
+  const { products, isLoading } = useFetchProducts();
   const [cart, dispatch] = useReducer(cartReducer, {});
 
-  //using reduce on an object rather than array
+  //using reduce on an object rather than array hence Object.keys()
   const numItemsInCart = Object.keys(cart).reduce((total, key) => {
     return total + cart[key];
   }, 0);

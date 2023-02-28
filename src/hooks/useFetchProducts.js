@@ -25,7 +25,7 @@ function useFetchProducts() {
     };
   }, []);
 
-  return [products, isLoading];
+  return { products, isLoading };
 }
 
 export default useFetchProducts;
