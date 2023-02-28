@@ -3,13 +3,19 @@ import Home from './components/Home';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
 import { Routes, Route } from 'react-router-dom';
-import useFetchProducts from './hooks/useFetchProducts';
 import { useReducer } from 'react';
 import cartReducer from './reducers/cartReducer';
+import { useQuery } from 'react-query';
 
 function App() {
-  const { products, isLoading } = useFetchProducts();
   const [cart, dispatch] = useReducer(cartReducer, {});
+  const { isLoading, error, data } = useQuery('fetchProducts', () =>
+    fetch('https://fakestoreapi.com/products/category/electronics').then(
+      (res) => res.json()
+    )
+  );
+
+  if (error) return <h1>{'Error has occurred: ' + error.message}</h1>;
 
   //using reduce on an object rather than array hence Object.keys()
   const numItemsInCart = Object.keys(cart).reduce((total, key) => {
@@ -48,7 +54,7 @@ function App() {
           path='/shopping-cart/shop'
           element={
             <Shop
-              products={products}
+              products={data}
               isLoading={isLoading}
               handleAddItem={addCartItem}
             />
@@ -59,7 +65,7 @@ function App() {
           path='/shopping-cart/cart'
           element={
             <Cart
-              products={products}
+              products={data}
               cart={cart}
               handleAddItem={addCartItem}
               handleRemoveItem={removeCartItem}
