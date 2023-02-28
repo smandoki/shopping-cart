@@ -1,6 +1,12 @@
 import styles from '../styles/Cart.module.css';
 
-function Cart({ products, cart, handleAddItem, handleRemoveItem }) {
+function Cart({
+  products,
+  cart,
+  handleAddItem,
+  handleRemoveItem,
+  handleDeleteItem,
+}) {
   const cartIsEmpty = Object.keys(cart).length === 0;
 
   return (
@@ -38,21 +44,29 @@ function Cart({ products, cart, handleAddItem, handleRemoveItem }) {
                     <p>${product.price}</p>
                   </td>
                   <td>
-                    <span className={styles.quantity}>
+                    <div className={styles.buttonWrapper}>
+                      <span className={styles.quantity}>
+                        <button
+                          className={styles.button}
+                          onClick={() => handleRemoveItem(product.id)}
+                        >
+                          -
+                        </button>
+                        <p>{cart[key]}</p>
+                        <button
+                          className={styles.button}
+                          onClick={() => handleAddItem(product.id)}
+                        >
+                          +
+                        </button>
+                      </span>
                       <button
-                        className={styles.button}
-                        onClick={() => handleRemoveItem(product.id)}
+                        className={styles.removeButton}
+                        onClick={() => handleDeleteItem(product.id)}
                       >
-                        -
+                        Remove Item
                       </button>
-                      <p>{cart[key]}</p>
-                      <button
-                        className={styles.button}
-                        onClick={() => handleAddItem(product.id)}
-                      >
-                        +
-                      </button>
-                    </span>
+                    </div>
                   </td>
                   <td>
                     <p>${product.price * cart[key]}</p>

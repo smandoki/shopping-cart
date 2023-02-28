@@ -41,6 +41,7 @@
 .button:hover {
   background-color: black;
   color: white;
+  cursor: pointer;
 }
 
 .button:active {
@@ -63,4 +64,21 @@
 
 .table th {
   padding-bottom: 10px;
+}
+
+.removeButton {
+  background-color: white;
+  border: none;
+  text-decoration: underline;
+  font-size: 0.8rem;
+  margin-top: 8px;
+}
+
+.removeButton:hover {
+  cursor: pointer;
+}
+
+.buttonWrapper {
+  position: relative;
+  top: 22px;
 }
